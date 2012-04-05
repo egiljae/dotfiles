@@ -3,7 +3,7 @@ autoload -Uz compinit
 compinit
 
 # Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+# bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -47,7 +47,7 @@ zle -N rationalise-dot
 bindkey . rationalise-dot
 
 # Spelling correction
-setopt correctall
+setopt correct
 
 # Host completion
 zstyle ':completion:*:(ssh|rsync|scp):*' hosts "${(f)$(awk '{print $2}' <$HOME/.hosts)}"
@@ -113,3 +113,14 @@ if [ ! -f ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh-syntax-highlighting
 fi
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Link rest of dotfiles
+if [ ! -L $HOME/.bash_aliases ]; then
+    ln -s $HOME/dotfiles/dot.bash_aliases $HOME/.bash_aliases
+fi
+if [ ! -L $HOME/.vimrc ]; then
+    ln -s $HOME/dotfiles/dot.vimrc $HOME/.vimrc
+fi
+if [ ! -L $HOME/.tmux.conf ]; then
+    ln -s $HOME/dotfiles/dot.tmux.conf $HOME/.tmux.conf
+fi
