@@ -6,6 +6,7 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 alias l="ls --color=auto"
 alias ll="ls -lh --color=auto"
+alias lla="ls -lah --color=auto"
 alias updateupgrade="sudo apt-get update && sudo apt-get upgrade"
 
 # hosts
@@ -15,17 +16,18 @@ function hostAtLine() {
     echo "ssh $user@$host"
 }
 
-alias bos="`hostAtLine 1`"
-alias col="`hostAtLine 2`"
-alias xfiles="`hostAtLine 3`"
-alias bubba="`hostAtLine 4`"
-alias mediabox="`hostAtLine 5`"
-alias wally="`hostAtLine 6`"
-alias slimbox="`hostAtLine 7`"
-
-# WOL
-alias wakemediabox="`hostAtLine 4` bin/wake_mediabox"
-alias wakewally="`hostAtLine 4` bin/wake_wally"
+if [ -f $HOME/.hosts ]; then
+    alias bos="`hostAtLine 1`"
+    alias col="`hostAtLine 2`"
+    alias xfiles="`hostAtLine 3`"
+    alias bubba="`hostAtLine 4`"
+    alias mediabox="`hostAtLine 5`"
+    alias wally="`hostAtLine 6`"
+    alias slimbox="`hostAtLine 7`"
+    # WOL
+    alias wakemediabox="`hostAtLine 4` bin/wake_mediabox"
+    alias wakewally="`hostAtLine 4` bin/wake_wally"
+fi
 
 
 # boss related
