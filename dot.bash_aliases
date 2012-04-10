@@ -6,13 +6,22 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 alias l="ls --color=auto"
 alias ll="ls -lh --color=auto"
+alias 'ls -la'="ls -lah --color=auto"
 alias updateupgrade="sudo apt-get update && sudo apt-get upgrade"
 
 # hosts
 function hostAtLine() {
     user=$(sed -n "$1p" $HOME/.hosts | awk '{print $1}')
     host=$(sed -n "$1p" $HOME/.hosts | awk '{print $2}')
-    echo "ssh $user@$host"
+    port=$(sed -n "$1p" $HOME/.hosts | awk '{print $3}')
+    if [[ $port == "" ]]; then
+        port="22"
+    fi
+    tool=$(sed -n "$1p" $HOME/.hosts | awk '{print $4}')
+    if [[ $tool == "" ]]; then
+        tool="ssh"
+    fi
+    echo "$tool -p $port $user@$host"
 }
 
 alias bos="`hostAtLine 1`"
@@ -32,3 +41,7 @@ alias wakewally="`hostAtLine 4` bin/wake_wally"
 if [[ `hostname -s` == "boss" ]]; then
     alias list="cat $HOME/bin/list*"
 fi
+
+# X related
+alias news="`hostAtLine 3` news"
+alias search="`hostAtLine 3` search"
