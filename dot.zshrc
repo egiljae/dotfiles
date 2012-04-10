@@ -50,7 +50,9 @@ bindkey . rationalise-dot
 setopt correct
 
 # Host completion
-zstyle ':completion:*:(ssh|rsync|scp):*' hosts "${(f)$(awk '{print $2}' <$HOME/.hosts)}"
+if [ -f $HOME/.hosts ]; then
+    zstyle ':completion:*:(ssh|rsync|scp):*' hosts "${(f)$(awk '{print $2}' <$HOME/.hosts)}"
+fi
 
 # Enable cache for completions
 zstyle ':completion:*' use-cache on
