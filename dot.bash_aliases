@@ -39,11 +39,7 @@ if [ -s $HOME/.hosts ]; then
     alias xnews="`hostAtLine 3` news"
     alias xsearch="`hostAtLine 3` search"
 
-    # boss related
-    if [[ `hostname -s` == "boss" ]]; then
-        alias bnews="cat $HOME/bin/wopr/list*"
-    else
-        alias bnews="`hostAtLine 1` 'cat bin/wopr/list*'"
-    fi
+    # B related
+    alias bnews="`hostAtLine 1` 'cat bin/wopr/list*'"
     alias bseach="`hostAtLine 1` search"
 fi
