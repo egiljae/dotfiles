@@ -2,9 +2,6 @@
 autoload -Uz compinit
 compinit
 
-# Use emacs keybindings even if our EDITOR is set to vi
-# bindkey -e
-
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
@@ -60,7 +57,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 setopt extended_glob
 
-# Some enviromental/shell pref stuff
+# Some environmental/shell pref stuff
 setopt EXTENDED_HISTORY # puts timestamps in the history
 setopt ALL_EXPORT
 
@@ -112,7 +109,7 @@ fi
 # Download zsh-syntax-highlighting
 if [ ! -f ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     echo "Could not find zsh-syntax-highlighting, downloading.."
-    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh-syntax-highlighting
+    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh-syntax-highlighting &> /dev/null
 fi
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -125,4 +122,14 @@ if [ ! -L $HOME/.vimrc ]; then
 fi
 if [ ! -L $HOME/.tmux.conf ]; then
     ln -s $HOME/dotfiles/dot.tmux.conf $HOME/.tmux.conf
+fi
+
+# Download vim spell check
+vimSpellFolder="/usr/share/vim/`ls -1 /usr/share/vim | egrep "vim[0-9]{2}"`/spell/"
+if [[ ! -f $vimSpellFolder/nb.latin1.spl || ! -f $vimSpellFolder/nb.utf-8.spl ]]; then
+    echo "Downloading Norwegian vim spell files"
+    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.spl -O $vimSpellFolder/nb.latin1.spl &> /dev/null
+    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.sug -O $vimSpellFolder/nb.latin1.sug &> /dev/null
+    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.spl -O $vimSpellFolder/nb.utf-8.spl &> /dev/null
+    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.sug -O $vimSpellFolder/nb.uft-8.sug &> /dev/null
 fi
