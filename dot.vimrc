@@ -1,6 +1,3 @@
-" Dark background
-" set background=dark
-
 " numbered lines
 set number
 
@@ -16,7 +13,7 @@ set shiftwidth=4
 " insert tabs as spaces
 set expandtab
 
-" filetype detection and smart indent
+" file type detection and smart indent
 filetype plugin indent on
 
 " enable syntax highlighting
@@ -50,3 +47,25 @@ augroup resCur
     autocmd!
     autocmd BufWinEnter * call ResCur()
 augroup END
+
+" Next lines is used when writing in latex
+
+" Set line width for document writing
+set textwidth=130
+
+" Set word spelling on
+set spell
+" Language for spelling
+setlocal spell spelllang=nb
+setlocal spell spelllang=en_us
+
+" Latex stuff
+" These settings are needed for latex-suite
+filetype indent on
+filetype plugin on
+filetype on
+let g:tex_flavor='latex'
+set grepprg=grep\ -nH\ $*  
+
+let g:Tex_Folding=0 "I don't like folding.
+set iskeyword+=:

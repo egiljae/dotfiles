@@ -18,11 +18,12 @@ function hostAtLine() {
     if [[ $tool == "" ]]; then 
         tool="ssh" 
     fi
-    echo "$tool -p $port $user@$host"
+    echo "$tool -p $port $2 $user@$host"
 }
 
 
 if [ -s $HOME/.hosts ]; then
+    # Hosts
     alias bos="`hostAtLine 1`"
     alias col="`hostAtLine 2`"
     alias xfiles="`hostAtLine 3`"
@@ -30,6 +31,9 @@ if [ -s $HOME/.hosts ]; then
     alias mediabox="`hostAtLine 5`"
     alias wally="`hostAtLine 6`"
     alias slimbox="`hostAtLine 7`"
+
+    # IRC
+    alias irc="`hostAtLine 2 -t` 'screen -dr irc'"
 
     # WOL
     alias wakemediabox="`hostAtLine 4` bin/wake_mediabox"
