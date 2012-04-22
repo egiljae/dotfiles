@@ -55,6 +55,7 @@ set textwidth=130
 
 " Set word spelling on
 set spell
+
 " Language for spelling
 setlocal spell spelllang=nb
 setlocal spell spelllang=en_us
@@ -69,3 +70,9 @@ set grepprg=grep\ -nH\ $*
 
 let g:Tex_Folding=0 "I don't like folding.
 set iskeyword+=:
+
+" Colors for spell correction
+highlight SpellBad      ctermfg=Red         term=Reverse        guisp=Red       gui=undercurl   ctermbg=White 
+highlight SpellCap      ctermfg=Green       term=Reverse        guisp=Green     gui=undercurl   ctermbg=White 
+highlight SpellLocal    ctermfg=Cyan        term=Underline      guisp=Cyan      gui=undercurl   ctermbg=White 
+highlight SpellRare     ctermfg=Magenta     term=Underline      guisp=Magenta   gui=undercurl   ctermbg=White
