@@ -5,6 +5,7 @@ alias l="ls --color=auto"
 alias ll="ls -lh --color=auto"
 alias lla="ls -lah --color=auto"
 alias updateupgrade="sudo apt-get update && sudo apt-get upgrade"
+alias gitpullpush="~/Dropbox/Skole/Bachelor/git.bash"
 
 # Find a host in $HOME/.hosts, eventually with SSH options $2 
 function getHostAtLine() {

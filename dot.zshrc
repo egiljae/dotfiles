@@ -8,6 +8,7 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 # Don't log my spaces!
+# Start a command with a space, it won't get logged!
 setopt histignorespace
 
 # Trying something simpler
@@ -33,6 +34,7 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # Adds slashes to dots! \o/
+# When cding, try entering cd .... 
 function rationalise-dot() {
     if [[ $LBUFFER = *.. ]]; then
         LBUFFER+=/../
@@ -47,6 +49,7 @@ bindkey . rationalise-dot
 setopt correct
 
 # Host completion
+# Will autocomplete hosts with SSH, rsync and scp
 if [ -f $HOME/.hosts ]; then
     zstyle ':completion:*:(ssh|rsync|scp):*' hosts "${(f)$(awk '{print $2}' <$HOME/.hosts)}"
 fi
@@ -132,4 +135,9 @@ if [[ ! -f $vimSpellFolder/nb.latin1.spl || ! -f $vimSpellFolder/nb.utf-8.spl ]]
     sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.sug -O $vimSpellFolder/nb.latin1.sug &> /dev/null
     sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.spl -O $vimSpellFolder/nb.utf-8.spl &> /dev/null
     sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.sug -O $vimSpellFolder/nb.uft-8.sug &> /dev/null
+fi
+
+# Add toolkit dir to path, if it exists
+if [ -d $HOME/toolkit ]; then
+    PATH="$PATH:$HOME/toolkit"
 fi

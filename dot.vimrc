@@ -58,7 +58,7 @@ set spell
 
 " Language for spelling
 setlocal spell spelllang=nb
-setlocal spell spelllang=en_us
+" setlocal spell spelllang=en_us
 
 " Latex stuff
 " These settings are needed for latex-suite
@@ -68,7 +68,8 @@ filetype on
 let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*  
 
-let g:Tex_Folding=0 "I don't like folding.
+" I don't like folding
+let g:Tex_Folding=0
 set iskeyword+=:
 
 " Colors for spell correction
