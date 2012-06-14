@@ -54,10 +54,14 @@ augroup END
 set textwidth=130
 
 " Set word spelling on
-set spell
+" set spell
+" set nospell
+
+" Set hilight for search
+set hlsearch
 
 " Language for spelling
-setlocal spell spelllang=nb
+" setlocal spell spelllang=nb
 " setlocal spell spelllang=en_us
 
 " Latex stuff
@@ -77,3 +81,13 @@ highlight SpellBad      ctermfg=Red         term=Reverse        guisp=Red       
 highlight SpellCap      ctermfg=Green       term=Reverse        guisp=Green     gui=undercurl   ctermbg=White 
 highlight SpellLocal    ctermfg=Cyan        term=Underline      guisp=Cyan      gui=undercurl   ctermbg=White 
 highlight SpellRare     ctermfg=Magenta     term=Underline      guisp=Magenta   gui=undercurl   ctermbg=White
+
+" Show extra spaces
+highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+
+" 
+autocmd BufWinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+
+" Show trailing whitespaces when leaving insert
+au InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertEnter * match
