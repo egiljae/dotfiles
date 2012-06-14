@@ -55,7 +55,6 @@ set textwidth=130
 
 " Set word spelling on
 " set spell
-" set nospell
 
 " Set hilight for search
 set hlsearch
@@ -77,15 +76,15 @@ let g:Tex_Folding=0
 set iskeyword+=:
 
 " Colors for spell correction
-highlight SpellBad      ctermfg=Red         term=Reverse        guisp=Red       gui=undercurl   ctermbg=White 
-highlight SpellCap      ctermfg=Green       term=Reverse        guisp=Green     gui=undercurl   ctermbg=White 
-highlight SpellLocal    ctermfg=Cyan        term=Underline      guisp=Cyan      gui=undercurl   ctermbg=White 
+highlight SpellBad      ctermfg=Red         term=Reverse        guisp=Red       gui=undercurl   ctermbg=White
+highlight SpellCap      ctermfg=Green       term=Reverse        guisp=Green     gui=undercurl   ctermbg=White
+highlight SpellLocal    ctermfg=Cyan        term=Underline      guisp=Cyan      gui=undercurl   ctermbg=White
 highlight SpellRare     ctermfg=Magenta     term=Underline      guisp=Magenta   gui=undercurl   ctermbg=White
 
 " Show extra spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 
-" 
+"
 autocmd BufWinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 
 " Show trailing whitespaces when leaving insert
