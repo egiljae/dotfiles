@@ -5,6 +5,7 @@ alias l="ls --color=auto"
 alias ll="ls -lh --color=auto"
 alias lla="ls -lah --color=auto"
 alias updateupgrade="sudo apt-get update && sudo apt-get upgrade"
+alias grep="grep --color=auto"
 
 # Find a host in $HOME/.aliases 
 function getSSHLineFromAliases {
@@ -51,7 +52,7 @@ if [ -s $HOME/.aliases ]; then
     # X related
     alias xnews="`getSSHLineFromAliases 4` news"
     alias xsearch="`getSSHLineFromAliases 4` search"
-    
+
     # S releated
     alias snews="`getSSHLineFromAliases 9` 'bin/news'"
 
