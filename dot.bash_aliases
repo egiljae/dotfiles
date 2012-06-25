@@ -5,50 +5,56 @@ alias l="ls --color=auto"
 alias ll="ls -lh --color=auto"
 alias lla="ls -lah --color=auto"
 alias updateupgrade="sudo apt-get update && sudo apt-get upgrade"
-alias gitpullpush="~/Dropbox/Skole/Bachelor/git.bash"
 
-# Find a host in $HOME/.hosts, eventually with SSH options $2 
-function getHostAtLine() {
-    user=$(sed -n "$1p" $HOME/.hosts | awk '{print $1}')
+# Find a host in $HOME/.aliases 
+function getSSHLineFromAliases {
+    user=$(sed -n "$1p" $HOME/.aliases | awk '{print $2}')
     if [[ $user == "" ]]; then
         # Line does not exist, return 1
         return 1
     fi
-    host=$(sed -n "$1p" $HOME/.hosts | awk '{print $2}')
-    port=$(sed -n "$1p" $HOME/.hosts | awk '{print $3}')
+    host=$(sed -n "$1p" $HOME/.aliases | awk '{print $3}')
+    port=$(sed -n "$1p" $HOME/.aliases | awk '{print $4}')
     if [[ $port == "" ]]; then 
         port="22"
     fi
     echo "ssh -p $port $2 $user@$host"
 }
 
-if [ -s $HOME/.hosts ]; then
-    # Hosts
-    alias bos="`getHostAtLine 1`"
-    alias col="`getHostAtLine 2`"
-    alias xfiles="`getHostAtLine 3`"
-    alias bubba="`getHostAtLine 4`"
-    alias mediabox="`getHostAtLine 5`"
-    alias wally="`getHostAtLine 6`"
-    alias slimbox="`getHostAtLine 7`"
+function getFieldFromAliases {
+    echo `sed -n "$1p" $HOME/.aliases | awk "{print \\$$2}"`
+}
+
+if [ -s $HOME/.aliases ]; then
+    # Hosts, first line has a comment
+    count=0
+    while read line; do
+        count=$(($count + 1))
+        if echo $line | grep -q "#"; then
+            # Line has a hash comment, skip
+            continue
+        fi
+        alias `getFieldFromAliases $count 1`="`getSSHLineFromAliases $count`"
+    done < $HOME/.aliases
 
     # IRC
-    alias irc="`getHostAtLine 2 -t` 'screen -dr irc'"
+    alias irc="`getSSHLineFromAliases 3 -t` 'screen -dr irc'"
 
     # WOL
-    alias wakemediabox="`getHostAtLine 4` bin/wake_mediabox"
-    alias wakewally="`getHostAtLine 4` bin/wake_wally"
-
-    # X related
-    alias xnews="`getHostAtLine 3` news"
-    alias xsearch="`getHostAtLine 3` search"
+    alias wakemediabox="`getSSHLineFromAliases 5` bin/wake_mediabox"
+    alias wakewally="`getSSHLineFromAliases 5` bin/wake_wally"
 
     # B related
-    if [[ `hostname` == "boss" ]]; then
-        alias bnews="cat bin/wopr/list*"
-        alias bsearch="search"
-    else
-        alias bnews="`getHostAtLine 1` 'cat bin/wopr/list*'"
-        alias bsearch="`getHostAtLine 1` search"
-    fi
+    alias bnews="`getSSHLineFromAliases 2` 'bin/news'"
+    alias bsearch="`getSSHLineFromAliases 2` 'bin/search'"
+
+    # X related
+    alias xnews="`getSSHLineFromAliases 4` news"
+    alias xsearch="`getSSHLineFromAliases 4` search"
+    
+    # S releated
+    alias snews="`getSSHLineFromAliases 9` 'bin/news'"
+
+    # All news
+    alias news="echo '***** `getFieldFromAliases 2 3` *****'; bnews; echo '***** `getFieldFromAliases 4 3` *****'; xnews; echo '***** `getFieldFromAliases 9 3` *****'; snews"
 fi
