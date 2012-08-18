@@ -82,11 +82,11 @@ highlight SpellLocal    ctermfg=Cyan        term=Underline      guisp=Cyan      
 highlight SpellRare     ctermfg=Magenta     term=Underline      guisp=Magenta   gui=undercurl   ctermbg=White
 
 " Show extra spaces
-highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+" highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 
 "
-autocmd BufWinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 
 " Show trailing whitespaces when leaving insert
-au InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertEnter * match
+" au InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
+" au InsertEnter * match
