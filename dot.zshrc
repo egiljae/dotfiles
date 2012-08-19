@@ -128,16 +128,25 @@ if [ ! -L $HOME/.tmux.conf ]; then
 fi
 
 # Download vim spell check
-vimSpellFolder="/usr/share/vim/`ls -1 /usr/share/vim | egrep "vim[0-9]{2}"`/spell/"
-if [[ ! -f $vimSpellFolder/nb.latin1.spl || ! -f $vimSpellFolder/nb.utf-8.spl ]]; then
-    echo "Downloading Norwegian vim spell files"
-    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.spl -O $vimSpellFolder/nb.latin1.spl &> /dev/null
-    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.sug -O $vimSpellFolder/nb.latin1.sug &> /dev/null
-    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.spl -O $vimSpellFolder/nb.utf-8.spl &> /dev/null
-    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.sug -O $vimSpellFolder/nb.uft-8.sug &> /dev/null
-fi
+#vimSpellFolder="/usr/share/vim/`ls -1 /usr/share/vim | egrep "vim[0-9]{2}"`/spell/"
+#if [[ ! -f $vimSpellFolder/nb.latin1.spl || ! -f $vimSpellFolder/nb.utf-8.spl ]]; then
+#    echo "Downloading Norwegian vim spell files"
+#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.spl -O $vimSpellFolder/nb.latin1.spl &> /dev/null
+#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.sug -O $vimSpellFolder/nb.latin1.sug &> /dev/null
+#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.spl -O $vimSpellFolder/nb.utf-8.spl &> /dev/null
+#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.sug -O $vimSpellFolder/nb.uft-8.sug &> /dev/null
+#fi
 
 # Add toolkit dir to path, if it exists
 if [ -d $HOME/toolkit ]; then
     PATH="$PATH:$HOME/toolkit"
 fi
+
+# Set 256 colors
+export TERM="xterm-256color"
+
+# Use vim as the default editor
+export EDITOR=vi
+
+# Bind ^r for backwards search
+bindkey '^R' history-incremental-search-backward
