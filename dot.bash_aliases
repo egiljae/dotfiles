@@ -55,6 +55,7 @@ if [ -s $HOME/.aliases ]; then
 
     # S releated
     alias snews="`getSSHLineFromAliases 9` 'bin/news'"
+    alias sup="`getSSHLineFromAliases 9` 'if pgrep rtorrent &> /dev/null; then echo UP; else echo DOWN; fi'"
 
     # All news
     alias news="echo '***** `getFieldFromAliases 2 3` *****'; bnews; echo '***** `getFieldFromAliases 4 3` *****'; xnews; echo '***** `getFieldFromAliases 9 3` *****'; snews"

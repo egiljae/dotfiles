@@ -7,6 +7,9 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
+# Do not repeat history of unique commands
+setopt HIST_IGNORE_DUPS
+
 # Don't log my spaces!
 # Start a command with a space, it won't get logged!
 setopt histignorespace
@@ -75,6 +78,11 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
     (( count = $count + 1 ))
 done
 
+# Add toolkit dir to path, if it exists
+if [ -d $HOME/toolkit ]; then
+    PATH="$PATH:$HOME/toolkit"
+fi
+
 # Prompt
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
 PS1="$PR_BLUE%n$PR_WHITE@$PR_GREEN%m%u$PR_NO_COLOR:$PR_RED%2c$PR_NO_COLOR%(!.#.$) "
@@ -136,11 +144,6 @@ fi
 #    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.spl -O $vimSpellFolder/nb.utf-8.spl &> /dev/null
 #    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.sug -O $vimSpellFolder/nb.uft-8.sug &> /dev/null
 #fi
-
-# Add toolkit dir to path, if it exists
-if [ -d $HOME/toolkit ]; then
-    PATH="$PATH:$HOME/toolkit"
-fi
 
 # Set 256 colors
 export TERM="xterm-256color"

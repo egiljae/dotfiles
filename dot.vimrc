@@ -51,7 +51,7 @@ augroup END
 " Next lines is used when writing in latex
 
 " Set line width for document writing
-set textwidth=130
+set textwidth=80
 
 " Set word spelling on
 " set spell
