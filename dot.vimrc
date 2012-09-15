@@ -51,7 +51,7 @@ augroup END
 " Next lines is used when writing in latex
 
 " Set line width for document writing
-set textwidth=80
+" set textwidth=80
 
 " Set word spelling on
 " set spell
@@ -65,21 +65,21 @@ set hlsearch
 
 " Latex stuff
 " These settings are needed for latex-suite
-filetype indent on
-filetype plugin on
-filetype on
-let g:tex_flavor='latex'
-set grepprg=grep\ -nH\ $*  
-
-" I don't like folding
-let g:Tex_Folding=0
-set iskeyword+=:
-
-" Colors for spell correction
-highlight SpellBad      ctermfg=Red         term=Reverse        guisp=Red       gui=undercurl   ctermbg=White
-highlight SpellCap      ctermfg=Green       term=Reverse        guisp=Green     gui=undercurl   ctermbg=White
-highlight SpellLocal    ctermfg=Cyan        term=Underline      guisp=Cyan      gui=undercurl   ctermbg=White
-highlight SpellRare     ctermfg=Magenta     term=Underline      guisp=Magenta   gui=undercurl   ctermbg=White
+" filetype indent on
+" filetype plugin on
+" filetype on
+" let g:tex_flavor='latex'
+" set grepprg=grep\ -nH\ $*  
+" 
+" " I don't like folding
+" let g:Tex_Folding=0
+" set iskeyword+=:
+" 
+" " Colors for spell correction
+" highlight SpellBad      ctermfg=Red         term=Reverse        guisp=Red       gui=undercurl   ctermbg=White
+" highlight SpellCap      ctermfg=Green       term=Reverse        guisp=Green     gui=undercurl   ctermbg=White
+" highlight SpellLocal    ctermfg=Cyan        term=Underline      guisp=Cyan      gui=undercurl   ctermbg=White
+" highlight SpellRare     ctermfg=Magenta     term=Underline      guisp=Magenta   gui=undercurl   ctermbg=White
 
 " Show extra spaces
 " highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
