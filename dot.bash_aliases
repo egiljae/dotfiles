@@ -9,17 +9,21 @@ alias grep="grep --color=auto"
 
 # Find a host in $HOME/.aliases 
 function getSSHLineFromAliases {
-    user=$(sed -n "$1p" $HOME/.aliases | awk '{print $2}')
+    user=$(sed -n "$1p" $HOME/.aliases | awk '{print $3}')
     if [[ $user == "" ]]; then
         # Line does not exist, return 1
         return 1
-    fi
-    host=$(sed -n "$1p" $HOME/.aliases | awk '{print $3}')
-    port=$(sed -n "$1p" $HOME/.aliases | awk '{print $4}')
+    fi 
+    type=$(sed -n "$1p" $HOME/.aliases | awk '{print $2}')
+    host=$(sed -n "$1p" $HOME/.aliases | awk '{print $4}')
+    port=$(sed -n "$1p" $HOME/.aliases | awk '{print $5}')
     if [[ $port == "" ]]; then 
         port="22"
     fi
-    echo "ssh -p $port $2 $user@$host"
+    if [[ $type == "mosh" ]]; then
+        port="2222"
+    fi
+    echo "$type -p $port $2 $user@$host"
 }
 
 function getFieldFromAliases {
@@ -39,15 +43,15 @@ if [ -s $HOME/.aliases ]; then
     done < $HOME/.aliases
 
     # IRC
-    alias irc="`getSSHLineFromAliases 3 -t` 'screen -dr irc'"
+    alias irc="`getSSHLineFromAliases 3` -- screen -dr irc"
 
     # WOL
-    alias wakemediabox="`getSSHLineFromAliases 5` bin/wake_mediabox"
-    alias wakewally="`getSSHLineFromAliases 5` bin/wake_wally"
+    alias wake_wally="`getSSHLineFromAliases 2` wake wally"
+    alias wake_mediabox="`getSSHLineFromAliases 2` wake mediabox"
 
     # B related
-    alias bnews="`getSSHLineFromAliases 2` 'bin/news'"
-    alias bsearch="`getSSHLineFromAliases 2` 'bin/search'"
+    alias bnews="`getSSHLineFromAliases 2` 'bin/pathscripts/news'"
+    alias bsearch="`getSSHLineFromAliases 2` 'bin/pathscripts/search'"
 
     # X related
     alias xnews="`getSSHLineFromAliases 4` news"
@@ -58,5 +62,5 @@ if [ -s $HOME/.aliases ]; then
     alias sup="`getSSHLineFromAliases 9` 'if pgrep rtorrent &> /dev/null; then echo UP; else echo DOWN; fi'"
 
     # All news
-    alias news="echo '***** `getFieldFromAliases 2 3` *****'; bnews; echo '***** `getFieldFromAliases 4 3` *****'; xnews; echo '***** `getFieldFromAliases 9 3` *****'; snews"
+    alias news="echo '***** `getFieldFromAliases 2 4` *****'; bnews; echo '***** `getFieldFromAliases 4 4` *****'; xnews; echo '***** `getFieldFromAliases 9 4` *****'; snews"
 fi

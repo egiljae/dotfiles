@@ -9,7 +9,27 @@ set tabstop=4
 
 " indent lines by this width
 set shiftwidth=4
-
+"
+"" disable arrow keys
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+"
+"" disable home, end, pageup, pagedown
+"noremap <home> <nop>
+"noremap <end> <nop>
+"noremap <pageup> <nop>
+"noremap <pagedown> <nop>
+"inoremap <home> <nop>
+"inoremap <end> <nop>
+"inoremap <pageup> <nop>
+"inoremap <pagedown> <nop>
+"
 " insert tabs as spaces
 set expandtab
 
@@ -27,6 +47,12 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%0
 
 " toggle paste mode
 set pastetoggle=<F10>
+
+" Set line width
+set textwidth=80
+
+" Set hilight for search
+set hlsearch
 
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
@@ -50,14 +76,8 @@ augroup END
 
 " Next lines is used when writing in latex
 
-" Set line width for document writing
-" set textwidth=80
-
 " Set word spelling on
 " set spell
-
-" Set hilight for search
-set hlsearch
 
 " Language for spelling
 " setlocal spell spelllang=nb
