@@ -8,7 +8,7 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 # Do not repeat history of unique commands
-setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 
 # Don't log my spaces!
 # Start a command with a space, it won't get logged!
