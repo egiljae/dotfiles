@@ -89,9 +89,11 @@ PS1="$PR_BLUE%n$PR_WHITE@$PR_GREEN%m%u$PR_NO_COLOR:$PR_RED%2c$PR_NO_COLOR%(!.#.$
 
 # For macbook
 if which battery &> /dev/null; then
-    RPROMPT="$PR_NO_COLOR%D{[%H:%M} -$(battery)$PR_NO_COLOR]$PR_NO_COLOR"
-else
-    RPROMPT="$PR_LIGHT_WHITE%D{[%H:%M]}$PR_NO_COLOR"
+    if [[ ! `battery` == "" ]]; then
+        RPROMPT="$PR_NO_COLOR%D{[%H:%M} -$(battery)$PR_NO_COLOR]$PR_NO_COLOR"
+    else 
+        RPROMPT="$PR_LIGHT_WHITE%D{[%H:%M]}$PR_NO_COLOR"
+    fi
 fi
 
 # Fix home, end and delete
@@ -134,7 +136,10 @@ fi
 if [ ! -L $HOME/.tmux.conf ]; then
     ln -s $HOME/dotfiles/dot.tmux.conf $HOME/.tmux.conf
 fi
-
+if [ ! -L $HOME/.bash_functions ]; then
+    ln -s $HOME/dotfiles/dot.bash_functions $HOME/.bash_functions
+fi
+source .bash_functions
 # Download vim spell check
 #vimSpellFolder="/usr/share/vim/`ls -1 /usr/share/vim | egrep "vim[0-9]{2}"`/spell/"
 #if [[ ! -f $vimSpellFolder/nb.latin1.spl || ! -f $vimSpellFolder/nb.utf-8.spl ]]; then
@@ -153,3 +158,4 @@ export EDITOR=vi
 
 # Bind ^r for backwards search
 bindkey '^R' history-incremental-search-backward
+

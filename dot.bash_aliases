@@ -6,6 +6,10 @@ alias ll="ls -lh --color=auto"
 alias lla="ls -lah --color=auto"
 alias updateupgrade="sudo apt-get update && sudo apt-get upgrade"
 alias grep="grep --color=auto"
+alias listfunctions="declare -f | egrep '.* \(\) {' | grep -v '_'"
+
+# Make random pas
+alias mkpwd="pwi=$RANDOM; let \"pwi %= 100\"; pwgen -sN 100 | xargs | awk \"{print \$$pwi}\""
 
 # Find a host in $HOME/.aliases 
 function getSSHLineFromAliases {
