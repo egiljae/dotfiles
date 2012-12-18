@@ -150,8 +150,8 @@ source .bash_functions
 #    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.sug -O $vimSpellFolder/nb.uft-8.sug &> /dev/null
 #fi
 
-# Set 256 colors
-export TERM="xterm-256color"
+# Set 256 colors, "screen" for tmux compatibility
+export TERM="screen-256color"
 
 # Use vim as the default editor
 export EDITOR=vi
