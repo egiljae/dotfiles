@@ -140,22 +140,13 @@ if [ ! -L $HOME/.bash_functions ]; then
     ln -s $HOME/dotfiles/dot.bash_functions $HOME/.bash_functions
 fi
 source .bash_functions
-# Download vim spell check
-#vimSpellFolder="/usr/share/vim/`ls -1 /usr/share/vim | egrep "vim[0-9]{2}"`/spell/"
-#if [[ ! -f $vimSpellFolder/nb.latin1.spl || ! -f $vimSpellFolder/nb.utf-8.spl ]]; then
-#    echo "Downloading Norwegian vim spell files"
-#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.spl -O $vimSpellFolder/nb.latin1.spl &> /dev/null
-#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.sug -O $vimSpellFolder/nb.latin1.sug &> /dev/null
-#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.spl -O $vimSpellFolder/nb.utf-8.spl &> /dev/null
-#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.sug -O $vimSpellFolder/nb.uft-8.sug &> /dev/null
-#fi
+if [ ! -L $HOME/.ncmpcpp/config ]; then
+    mkdir .ncmpcpp
+    ln -s $HOME/dotfiles/dot.ncmpcpp.config $HOME/.ncmpcpp/config
+fi
 
 # Set 256 colors, "screen" for tmux compatibility
 export TERM="screen-256color"
 
-# Use vim as the default editor
-export EDITOR=vi
-
 # Bind ^r for backwards search
 bindkey '^R' history-incremental-search-backward
-
