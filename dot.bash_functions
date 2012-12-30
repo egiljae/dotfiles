@@ -61,3 +61,25 @@ mkpasswd() {
     fi
     pwi=$RANDOM; let "pwi %= 100"; pwgen -sN 100 $1 | xargs | awk "{print \$$pwi}"
 }
+
+spotty() {
+    session="spotify"
+
+    tmux new -d -s $session
+    tmux split-window -h
+    tmux select-pane -t 1
+    # Start mopidy
+    tmux send-keys -t 1 "mopidy" C-m
+    tmux select-pane -t 1
+    # Show the clock
+    tmux split-window -v
+    tmux clock
+    tmux select-pane -t 0
+    tmux select-pane -t 0
+    # Wait for mopidy to start, then start ncmpcpp
+    sleep 2
+    tmux send-keys -t 0 "ncmpcpp" C-m
+    # Give ncmpcpp some space
+    tmux resize-pane -R 50
+    tmux att -t $session
+}
