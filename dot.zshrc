@@ -151,7 +151,7 @@ fi
 
 # Set 256 colors
 export TERM="xterm-256color"
-if [ -n "$TMUX" ] && export TERM=screen-256color
+[ -n "$TMUX" ] && export TERM=screen-256color
 
 # Bind ^r for backwards search
 bindkey '^R' history-incremental-search-backward
