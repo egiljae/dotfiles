@@ -39,6 +39,9 @@ filetype plugin indent on
 " enable syntax highlighting
 syntax on
 
+" Set 256 colors
+set t_Co=256
+
 " always show the status line as the second last line
 set laststatus=2
 

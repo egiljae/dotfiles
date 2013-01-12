@@ -14,6 +14,9 @@ setopt HIST_IGNORE_ALL_DUPS
 # Start a command with a space, it won't get logged!
 setopt histignorespace
 
+# Change directories without cd
+setopt autocd
+
 # Trying something simpler
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -79,8 +82,8 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
 done
 
 # Add toolkit dir to path, if it exists
-if [ -d $HOME/toolkit ]; then
-    PATH="$PATH:$HOME/toolkit"
+if [ -d $HOME/git/toolkit ]; then
+    PATH="$PATH:$HOME/git/toolkit"
 fi
 
 # Prompt
@@ -128,25 +131,27 @@ source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Link rest of dotfiles
 if [ ! -L $HOME/.bash_aliases ]; then
-    ln -s $HOME/dotfiles/dot.bash_aliases $HOME/.bash_aliases
+    ln -s $HOME/git/dotfiles/dot.bash_aliases $HOME/.bash_aliases
 fi
 if [ ! -L $HOME/.vimrc ]; then
-    ln -s $HOME/dotfiles/dot.vimrc $HOME/.vimrc
+    ln -s $HOME/git/dotfiles/dot.vimrc $HOME/.vimrc
 fi
 if [ ! -L $HOME/.tmux.conf ]; then
-    ln -s $HOME/dotfiles/dot.tmux.conf $HOME/.tmux.conf
+    ln -s $HOME/git/dotfiles/dot.tmux.conf $HOME/.tmux.conf
 fi
 if [ ! -L $HOME/.bash_functions ]; then
-    ln -s $HOME/dotfiles/dot.bash_functions $HOME/.bash_functions
+    ln -s $HOME/git/dotfiles/dot.bash_functions $HOME/.bash_functions
 fi
-source .bash_functions
+source $HOME/.bash_functions
+
 if [ ! -L $HOME/.ncmpcpp/config ]; then
-    mkdir .ncmpcpp
-    ln -s $HOME/dotfiles/dot.ncmpcpp.config $HOME/.ncmpcpp/config
+    mkdir  $HOME/.ncmpcpp
+    ln -s $HOME/git/dotfiles/dot.ncmpcpp.config $HOME/.ncmpcpp/config
 fi
 
-# Set 256 colors, "screen" for tmux compatibility
-export TERM="screen-256color"
+# Set 256 colors
+export TERM="xterm-256color"
+if [ -n "$TMUX" ] && export TERM=screen-256color
 
 # Bind ^r for backwards search
 bindkey '^R' history-incremental-search-backward
