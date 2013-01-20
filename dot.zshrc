@@ -124,7 +124,7 @@ fi
 
 # Download zsh-syntax-highlighting
 if [[ -d ~/.zsh/zsh-syntax-highlighting ]]; then
-    . ~/.zsh/zsh-syntax-highlighting
+    . ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 # Source bash_functions
