@@ -113,7 +113,7 @@ if [[ -x /usr/bin/vim ]]; then
 fi
 
 # Load aliases
-if [[ -s ~/.bash_aliases ]]; then
+if [[ -L ~/.bash_aliases ]]; then
     . ~/.bash_aliases
 fi
 
@@ -128,7 +128,7 @@ if [[ -d ~/.zsh/zsh-syntax-highlighting ]]; then
 fi
 
 # Source bash_functions
-if [ ! -L ~/.bash_functions ]; then
+if [ -L ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
