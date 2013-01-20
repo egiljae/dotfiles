@@ -1,0 +1,8 @@
+[user]
+    name = Jan Egil Jægersborg
+    email = egiljae@gmail.com
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+[web]
+    browser = google-chrome

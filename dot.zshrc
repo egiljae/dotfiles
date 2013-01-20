@@ -123,15 +123,13 @@ if [[ -s /etc/zsh_command_not_found ]]; then
 fi
 
 # Download zsh-syntax-highlighting
-if [ ! -f ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-    echo "Could not find zsh-syntax-highlighting, downloading.."
-    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh-syntax-highlighting &> /dev/null
+if [[ -d ~/.zsh/zsh-syntax-highlighting ]]; then
+    . ~/.zsh/zsh-syntax-highlighting
 fi
-source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Source bash_functions
 if [ ! -L ~/.bash_functions ]; then
-    source ~/.bash_functions
+    . ~/.bash_functions
 fi
 
 # Set 256 colors

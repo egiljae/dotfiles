@@ -1,0 +1,25 @@
+# Python
+*.py[oc]
+venv
+
+# Java
+*.class
+build
+dist
+target
+
+# vim
+.netrwhist
+*.swp
+*~
+
+# Eclipse
+.classpath
+.project
+.settings
+
+# Misc
+*.log
+*.bak
+*.lock
+.DS_Store
