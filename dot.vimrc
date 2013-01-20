@@ -9,17 +9,20 @@ set tabstop=4
 
 " indent lines by this width
 set shiftwidth=4
-"
-"" disable arrow keys
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
-"
+
+" Set incremental search
+set incsearch
+
+" disable arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
 "" disable home, end, pageup, pagedown
 "noremap <home> <nop>
 "noremap <end> <nop>
@@ -48,9 +51,6 @@ set laststatus=2
 " status line
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
-" toggle paste mode
-set pastetoggle=<F10>
-
 " Set line width
 set textwidth=80
 
@@ -76,40 +76,3 @@ augroup resCur
     autocmd!
     autocmd BufWinEnter * call ResCur()
 augroup END
-
-" Next lines is used when writing in latex
-
-" Set word spelling on
-" set spell
-
-" Language for spelling
-" setlocal spell spelllang=nb
-" setlocal spell spelllang=en_us
-
-" Latex stuff
-" These settings are needed for latex-suite
-" filetype indent on
-" filetype plugin on
-" filetype on
-" let g:tex_flavor='latex'
-" set grepprg=grep\ -nH\ $*  
-" 
-" " I don't like folding
-" let g:Tex_Folding=0
-" set iskeyword+=:
-" 
-" " Colors for spell correction
-" highlight SpellBad      ctermfg=Red         term=Reverse        guisp=Red       gui=undercurl   ctermbg=White
-" highlight SpellCap      ctermfg=Green       term=Reverse        guisp=Green     gui=undercurl   ctermbg=White
-" highlight SpellLocal    ctermfg=Cyan        term=Underline      guisp=Cyan      gui=undercurl   ctermbg=White
-" highlight SpellRare     ctermfg=Magenta     term=Underline      guisp=Magenta   gui=undercurl   ctermbg=White
-
-" Show extra spaces
-" highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
-
-"
-" autocmd BufWinEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-
-" Show trailing whitespaces when leaving insert
-" au InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
-" au InsertEnter * match

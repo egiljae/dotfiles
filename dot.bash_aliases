@@ -60,17 +60,9 @@ if [ -s $HOME/.aliases ]; then
     alias wake_wally="`getSSHLineFromAliases 2` wake wally"
     alias wake_mediabox="`getSSHLineFromAliases 2` wake mediabox"
 
-    # B related
-    alias bnews="`getSSHLineFromAliases 2` 'bin/pathscripts/news'"
     alias bsearch="`getSSHLineFromAliases 2` 'bin/pathscripts/search'"
-
-    # X related
-    alias xnews="`getSSHLineFromAliases 4` news"
     alias xsearch="`getSSHLineFromAliases 4` search"
-
-    # S releated
     alias snews="`getSSHLineFromAliases 9` 'bin/news'"
-    alias sup="`getSSHLineFromAliases 9` 'if pgrep rtorrent &> /dev/null; then echo UP; else echo DOWN; fi'"
 
     # All news
     alias news="echo '***** `getFieldFromAliases 2 4` *****'; bnews; echo '***** `getFieldFromAliases 4 4` *****'; xnews; echo '***** `getFieldFromAliases 9 4` *****'; snews"

@@ -56,8 +56,8 @@ setopt correct
 
 # Host completion
 # Will autocomplete hosts with SSH, rsync and scp
-if [ -f $HOME/.hosts ]; then
-    zstyle ':completion:*:(ssh|rsync|scp):*' hosts "${(f)$(awk '{print $2}' <$HOME/.hosts)}"
+if [ -f ~/.hosts ]; then
+    zstyle ':completion:*:(ssh|rsync|scp):*' hosts "${(f)$(awk '{print $2}' <~/.hosts)}"
 fi
 
 # Enable cache for completions
@@ -82,8 +82,8 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
 done
 
 # Add toolkit dir to path, if it exists
-if [ -d $HOME/git/toolkit ]; then
-    PATH="$PATH:$HOME/git/toolkit"
+if [ -d ~/git/toolkit ]; then
+    PATH="$PATH:~/git/toolkit"
 fi
 
 # Prompt
@@ -129,28 +129,14 @@ if [ ! -f ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 fi
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Link rest of dotfiles
-if [ ! -L $HOME/.bash_aliases ]; then
-    ln -s $HOME/git/dotfiles/dot.bash_aliases $HOME/.bash_aliases
-fi
-if [ ! -L $HOME/.vimrc ]; then
-    ln -s $HOME/git/dotfiles/dot.vimrc $HOME/.vimrc
-fi
-if [ ! -L $HOME/.tmux.conf ]; then
-    ln -s $HOME/git/dotfiles/dot.tmux.conf $HOME/.tmux.conf
-fi
-if [ ! -L $HOME/.bash_functions ]; then
-    ln -s $HOME/git/dotfiles/dot.bash_functions $HOME/.bash_functions
-fi
-source $HOME/.bash_functions
-
-if [ ! -L $HOME/.ncmpcpp/config ]; then
-    mkdir  $HOME/.ncmpcpp
-    ln -s $HOME/git/dotfiles/dot.ncmpcpp.config $HOME/.ncmpcpp/config
+# Source bash_functions
+if [ ! -L ~/.bash_functions ]; then
+    source ~/.bash_functions
 fi
 
 # Set 256 colors
 export TERM="xterm-256color"
+# If session is tmux, set screen-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 # Bind ^r for backwards search
