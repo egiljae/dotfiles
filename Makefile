@@ -3,7 +3,7 @@ LN_FLAGS = -sf
 symlinks = .bashrc .bash_aliases .bash_functions .tmux.conf .vimrc .zshrc \
 		   .gitignore .gitconfig
 
-symdirs = .ncmpcpp .vim
+symdirs = .ncmpcpp .vim .pulse
 		   
 .PHONY: $(symlinks) $(symdirs)
 
