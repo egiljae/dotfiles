@@ -8,7 +8,7 @@ alias updateupgrade="sudo apt-get update && sudo apt-get upgrade"
 alias grep="grep --color=auto"
 alias listfunctions="declare -f | egrep '.* \(\) {' | grep -v '_'"
 
-# Mount crypted dropbox folder
+# Mount encrypted dropbox folder
 alias mountcrypto="encfs -o allow_root ~/Dropbox/.encrypted ~/Private"
 
 # Show lines that are not commented out

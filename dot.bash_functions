@@ -84,7 +84,7 @@ spotty() {
     tmux att -t $session
 }
 
-extract () {
+extract() {
     if [ -f $1 ] ; then
       case $1 in
         *.tar.bz2)   tar xjf $1     ;;
@@ -104,3 +104,9 @@ extract () {
          echo "'$1' is not a valid file"
      fi
 }
+
+# Mount encrypted volume
+mountcryptv() {
+    cryptsetup luksOpen $1 cdisk
+}
+
