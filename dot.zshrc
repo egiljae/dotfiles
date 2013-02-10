@@ -85,7 +85,7 @@ done
 
 # Add toolkit dir to path, if it exists
 if [ -d ~/git/toolkit ]; then
-    PATH="$PATH:~/git/toolkit"
+    PATH="$PATH:$HOME/git/toolkit"
 fi
 
 # Prompt
