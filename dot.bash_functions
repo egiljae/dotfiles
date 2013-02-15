@@ -59,7 +59,8 @@ mkpasswd() {
         echo "Usage: $0 numcharacters"
         return 1
     fi
-    pwi=$RANDOM; let "pwi %= 100"; pwgen -sN 100 $1 | xargs | awk "{print \$$pwi}"
+    pwi=$RANDOM; let "pwi %= 100"; pwgen -ysCN 100 $1 | sed "s/'/./g" | sed\
+    's/"/-/g' | xargs | awk "{print \$$pwi}"
 }
 
 spotty() {
