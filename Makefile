@@ -26,7 +26,7 @@ zsh-syntax:
 
 bundle:
 	mkdir -p dot.vim/bundle
-	test -d dot.vim/bundle/vundle || \
+	test -d  dot.vim/bundle/vundle || \
 		(git clone --quiet https://github.com/gmarik/vundle.git \
 		dot.vim/bundle/vundle && vim +BundleInstall +qall)
 

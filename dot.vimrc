@@ -65,7 +65,7 @@ Bundle 'gmarik/vundle'
 
 " vundle bundles
 Bundle 'kien/ctrlp.vim'
-Bundle 'scroolose/syntastic'
+Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-surround'
@@ -120,4 +120,3 @@ inoremap jj <Esc>
 
 " hidden buffers
 set hidden
-
