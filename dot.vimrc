@@ -1,3 +1,6 @@
+" iMproved
+set nocompatible
+
 " numbered lines
 set number
 
@@ -13,43 +16,20 @@ set shiftwidth=4
 " Set incremental search
 set incsearch
 
-" disable arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" do not wrap lines
+set nowrap
 
-"" disable home, end, pageup, pagedown
-"noremap <home> <nop>
-"noremap <end> <nop>
-"noremap <pageup> <nop>
-"noremap <pagedown> <nop>
-"inoremap <home> <nop>
-"inoremap <end> <nop>
-"inoremap <pageup> <nop>
-"inoremap <pagedown> <nop>
-"
+" allow backspace to delete chars
+set bs=2
+
 " insert tabs as spaces
 set expandtab
 
 " file type detection and smart indent
 filetype plugin indent on
 
-" enable syntax highlighting
-syntax on
-
-" Set 256 colors
-set t_Co=256
-
 " always show the status line as the second last line
 set laststatus=2
-
-" status line
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " Set line width
 set textwidth=80
@@ -76,3 +56,68 @@ augroup resCur
     autocmd!
     autocmd BufWinEnter * call ResCur()
 augroup END
+
+" vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" vundle bundles
+Bundle 'kien/ctrlp.vim'
+Bundle 'scroolose/syntastic'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-surround'
+
+" syntax
+Bundle 'rodjek/vim-puppet'
+
+" enable syntax highlighting
+syntax on
+
+" case insensitive search
+set ignorecase
+set smartcase
+
+" clear search highlights
+noremap <silent><leader>/ :nohls<cr>
+
+" show column marker
+if exists('+colorcolumn')
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=235
+endif
+
+" directory for swap files 
+set directory=~/.vim/swap
+
+" Set 256 colors
+set t_Co=256
+
+" disable arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" disable home, end, pageup, pagedown
+noremap <home> <nop>
+noremap <end> <nop>
+noremap <pageup> <nop>
+noremap <pagedown> <nop>
+inoremap <home> <nop>
+inoremap <end> <nop>
+inoremap <pageup> <nop>
+inoremap <pagedown> <nop>
+
+" map jj to escape
+inoremap jj <Esc>
+
+" hidden buffers
+set hidden
+
