@@ -141,9 +141,3 @@ export TERM="xterm-256color"
 
 # Bind ^r for backwards search
 bindkey '^R' history-incremental-search-backward
-
-# Automatically quote globs in URL and remote references
-__remote_commands=(scp rsync)
-autoload -U url-quote-magic
-zle -N self-insert url-quote-magic
-zstyle -e :urlglobber url-other-schema '[[ $__remote_commands[(i)$words[1]] -le ${#__remote_commands} ]] && reply=("*") || reply=(http https ftp)'

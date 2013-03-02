@@ -111,3 +111,6 @@ mountcryptv() {
     cryptsetup luksOpen $1 cdisk
 }
 
+gi() {
+    curl http://gitignore.io/api/$@ ;
+}
