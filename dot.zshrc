@@ -106,6 +106,9 @@ bindkey '^[[1~' beginning-of-line
 bindkey '^[[4~' end-of-line
 bindkey '^[[3~' delete-char
 
+# Bind ^r for backwards search
+bindkey '^R' history-incremental-search-backward
+
 # Allow comments interactive shell
 setopt interactivecomments
 
@@ -124,7 +127,7 @@ if [[ -s /etc/zsh_command_not_found ]]; then
     . /etc/zsh_command_not_found
 fi
 
-# Download zsh-syntax-highlighting
+# Source zsh-syntax-highlighting
 if [[ -d ~/.zsh/zsh-syntax-highlighting ]]; then
     . ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
@@ -134,13 +137,13 @@ if [ -L ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
+# Source z - jump around
+if [[ -d ~/.zsh/z/ ]]; then
+    . ~/.zsh/z/z.sh
+fi
+
 # Set 256 colors
 export TERM="xterm-256color"
+
 # If session is tmux, set screen-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
-
-# Bind ^r for backwards search
-bindkey '^R' history-incremental-search-backward
-
-# Source z - jump around
-. ~/.zsh/z/z.sh
