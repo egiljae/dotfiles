@@ -141,3 +141,6 @@ export TERM="xterm-256color"
 
 # Bind ^r for backwards search
 bindkey '^R' history-incremental-search-backward
+
+# Source z - jump around
+. ~/.zsh/z/z.sh

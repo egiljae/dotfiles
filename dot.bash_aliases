@@ -60,9 +60,9 @@ if [ -s $HOME/.aliases ]; then
     alias wake_wally="`getSSHLineFromAliases 2` wake wally"
     alias wake_mediabox="`getSSHLineFromAliases 2` wake mediabox"
 
-    alias bsearch="`getSSHLineFromAliases 2` 'bin/pathscripts/search'"
+    alias bsearch="`getSSHLineFromAliases 2` 'search'"
     alias xsearch="`getSSHLineFromAliases 4` search"
-    alias snews="`getSSHLineFromAliases 9` 'bin/news'"
+    alias snews="`getSSHLineFromAliases 9` 'news'"
 
     # All news
     alias news="echo '***** `getFieldFromAliases 2 4` *****'; bnews; echo '***** `getFieldFromAliases 4 4` *****'; xnews; echo '***** `getFieldFromAliases 9 4` *****'; snews"
