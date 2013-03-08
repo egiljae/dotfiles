@@ -4,6 +4,7 @@
 alias l="ls --color=auto"
 alias ll="ls -lh --color=auto"
 alias lla="ls -lah --color=auto"
+alias pee="pulseaudio-equalizer enable"
 alias updateupgrade="sudo apt-get update && sudo apt-get upgrade"
 alias grep="grep --color=auto"
 alias listfunctions="declare -f | egrep '.* \(\) {' | grep -v '_'"
