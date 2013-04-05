@@ -56,6 +56,7 @@ if [ -s $HOME/.aliases ]; then
 
     # IRC
     alias irc="`getSSHLineFromAliases 3` -- screen -dr irc"
+    alias wee="`getSSHLineFromAliases 3` -- tmux att"
 
     # WOL
     alias wake_wally="`getSSHLineFromAliases 2` wake wally"
