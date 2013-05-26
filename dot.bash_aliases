@@ -16,7 +16,7 @@ alias mountcrypto="encfs -o allow_root ~/Dropbox/.encrypted ~/Private"
 alias active='grep -v -e "^$" -e"^ *#"'
 
 # Show frequent commands
-alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n
+alias freq='cut -f1 -d" " ~/.zsh_history | sort | uniq -c | sort -nr | head -n
 30'
 
 # Find a host in $HOME/.aliases 
@@ -55,17 +55,10 @@ if [ -s $HOME/.aliases ]; then
     done < $HOME/.aliases
 
     # IRC
-    alias irc="`getSSHLineFromAliases 3` -- screen -dr irc"
-    alias wee="`getSSHLineFromAliases 3` -- tmux att"
+    alias irc="`getSSHLineFromAliases 3` -- tmux att -t irc"
+    alias wee="`getSSHLineFromAliases 3` -- tmux att -t wee"
 
     # WOL
     alias wake_wally="`getSSHLineFromAliases 2` wake wally"
     alias wake_mediabox="`getSSHLineFromAliases 2` wake mediabox"
-
-    alias bsearch="`getSSHLineFromAliases 2` 'search'"
-    alias xsearch="`getSSHLineFromAliases 4` search"
-    alias snews="`getSSHLineFromAliases 9` 'news'"
-
-    # All news
-    alias news="echo '***** `getFieldFromAliases 2 4` *****'; bnews; echo '***** `getFieldFromAliases 4 4` *****'; xnews; echo '***** `getFieldFromAliases 9 4` *****'; snews"
 fi
