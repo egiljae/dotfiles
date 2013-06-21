@@ -5,7 +5,7 @@ alias l="ls --color=auto"
 alias ll="ls -lh --color=auto"
 alias lla="ls -lah --color=auto"
 alias pee="pulseaudio-equalizer enable"
-alias updateupgrade="sudo apt-get update && sudo apt-get upgrade"
+alias aptgrade="sudo apt-get update && sudo apt-get upgrade"
 alias grep="grep --color=auto"
 alias listfunctions="declare -f | egrep '.* \(\) {' | grep -v '_'"
 
@@ -55,8 +55,7 @@ if [ -s $HOME/.aliases ]; then
     done < $HOME/.aliases
 
     # IRC
-    alias irc="`getSSHLineFromAliases 3` -- tmux att -t irc"
-    alias wee="`getSSHLineFromAliases 3` -- tmux att -t wee"
+    alias irc="`getSSHLineFromAliases 3` -- tmux att -t wee"
 
     # WOL
     alias wake_wally="`getSSHLineFromAliases 2` wake wally"
