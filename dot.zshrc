@@ -42,7 +42,7 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 # add custom completion scripts
 fpath=(~/.zsh/completion $fpath)
 
-# When cding, try entering cd .... 
+# When cd-ing, one may use ..
 function rationalise-dot() {
     if [[ $LBUFFER = *.. ]]; then
         LBUFFER+=/../

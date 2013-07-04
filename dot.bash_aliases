@@ -5,8 +5,12 @@ alias l="ls --color=auto"
 alias ll="ls -lh --color=auto"
 alias lla="ls -lah --color=auto"
 alias pee="pulseaudio-equalizer enable"
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias rgrep='rgrep --color=auto'
+alias week="date +%V"
 alias aptgrade="sudo apt-get update && sudo apt-get upgrade"
-alias grep="grep --color=auto"
 alias listfunctions="declare -f | egrep '.* \(\) {' | grep -v '_'"
 
 # Mount encrypted dropbox folder

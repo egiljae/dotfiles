@@ -37,6 +37,9 @@ set textwidth=80
 " Set hilight for search
 set hlsearch
 
+" set a sane hilight color
+hi Search cterm=NONE ctermfg=black ctermbg=lightblue
+
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
 "  "100 :  will save up to 100 lines for each register
@@ -58,20 +61,25 @@ augroup resCur
 augroup END
 
 " vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+if isdirectory(expand('$HOME/.vim/bundle/vundle'))
+    filetype off
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    Bundle 'gmarik/vundle'
 
-" vundle bundles
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'tpope/vim-surround'
+    " vundle bundles
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'scrooloose/syntastic'
+    Bundle 'Lokaltog/vim-easymotion'
+    Bundle 'Lokaltog/powerline'
+    Bundle 'tpope/vim-surround'
 
-" syntax
-Bundle 'rodjek/vim-puppet'
+    " powerline init
+    set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
+    " syntax
+    Bundle 'rodjek/vim-puppet'
+endif
 
 " enable syntax highlighting
 syntax on
@@ -120,3 +128,6 @@ inoremap jj <Esc>
 
 " hidden buffers
 set hidden
+
+" indent/outdent to nearest tabstops
+set shiftround
