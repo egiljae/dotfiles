@@ -1,12 +1,12 @@
 LN_FLAGS = -sf
 CP_FLAGS = -rf
 
-symlinks = .bashrc .bash_aliases .bash_functions .tmux.conf .vimrc .zshrc \
-		   .gitignore .gitconfig
+symlinks = .bashrc .bash_aliases .bash_functions .tmux.conf \
+		   .zshrc .vimrc .gitignore .gitconfig
 
-symdirs = .ncmpcpp .vim
-dirs = .pulse
-		   
+symdirs = .ncmpcpp .vim .fonts .config/fontconfig/conf.d
+dirs = .pulse 
+
 .PHONY: $(symlinks) $(symdirs)
 
 all: install
@@ -40,4 +40,8 @@ bundle:
 		(git clone --quiet https://github.com/gmarik/vundle.git \
 		dot.vim/bundle/vundle && vim +BundleInstall +qall)
 
-install: $(symlinks) $(symdirs) $(dirs) zsh-syntax z bundle
+fontconfig:
+	test -d ~/.config/fontconfig/conf.d  || \
+		mkdir -p ~/.config/fontconfig/conf.d
+
+install: fontconfig $(symlinks) $(symdirs) $(dirs) zsh-syntax z bundle
