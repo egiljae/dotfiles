@@ -131,3 +131,7 @@ set hidden
 
 " indent/outdent to nearest tabstops
 set shiftround
+
+" Show unbreakable spaces
+"set list listchars=nbsp:¬,tab:>-,extends:»,precedes:«,trail:•
+set list listchars=nbsp:¬,tab:>-,extends:»,precedes:«
