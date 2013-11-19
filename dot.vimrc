@@ -13,7 +13,13 @@ set tabstop=4
 " indent lines by this width
 set shiftwidth=4
 
-" Set incremental search
+" autoindent new line
+set autoindent
+
+" round indent
+set shiftround
+
+" set incremental search
 set incsearch
 
 " do not wrap lines
@@ -73,12 +79,17 @@ if isdirectory(expand('$HOME/.vim/bundle/vundle'))
     Bundle 'Lokaltog/vim-easymotion'
     Bundle 'Lokaltog/powerline'
     Bundle 'tpope/vim-surround'
+    Bundle 'nvie/vim-flake8'
+    Bundle 'hynek/vim-python-pep8-indent'
 
     " powerline init
     set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
     " syntax
     Bundle 'rodjek/vim-puppet'
+
+    " syntastic use flake8
+    let g:syntastic_python_checkers = ['flake8', 'python']
 endif
 
 " enable syntax highlighting
