@@ -65,3 +65,6 @@ if [ -s $HOME/.aliases ]; then
     alias wake_wally="`getSSHLineFromAliases 2` wake wally"
     alias wake_mediabox="`getSSHLineFromAliases 2` wake mediabox"
 fi
+
+# Delete host from knownhosts
+alias delhost="sed -i '$1d' ~/.ssh/known_hosts"
