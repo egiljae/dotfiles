@@ -53,6 +53,13 @@ function rationalise-dot() {
 zle -N rationalise-dot
 bindkey . rationalise-dot
 
+# Bind ^b to find last file
+function last-file() {
+    LBUFFER+=$(ls -r | tail -n1)
+}
+zle -N last-file
+bindkey '^b' last-file
+
 # Spelling correction
 setopt correct
 
